@@ -44,7 +44,7 @@
 //║▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓║
 //████████████████████████████████████████████████████████████████████████████████
 //█ .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .█
-//▓  LemonLace Bootstrap Wrapper v4.1 - Created by Michael Cook - m.ichael.co.uk ▓
+//▓  LemonLace Bootstrap Wrapper v4.2 - Created by Michael Cook - m.ichael.co.uk ▓
 //▓. @license:http://opensource.org/licenses/MIT  .   .   .   .   .   .   .   .  ▓
 //▒ .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .▒
 //╚══════════════════════════════════════════════════════════════════════════════╝
@@ -73,7 +73,7 @@ $gutterless-classes: true!default; // 2kb extra
 //║ More advanced classes are also created such as .sm-plus-extra-gutters-2--right║
 //║ Note: The current maximum is 4                                                ║
 //╚═══════════════════════════════════════════════════════════════════════════════╝
-$extra-gutter-classes: true!default; // 6.2kb extra
+$extra-gutter-classes: false!default; // 6.2kb extra
 
 
 //╔══════════════════════════════ General Features ═══════════════════════════════╗
@@ -305,8 +305,6 @@ $alt-class-names: false!default;
 
 
 
-
-
 /*
  * Generate all the generic classes from above mixins e.g. .gutterless
  */
@@ -319,6 +317,7 @@ $alt-class-names: false!default;
 
 // Generic gutterless rows
 @include gutterless-rows('.row.');
+
 
 
 
@@ -351,6 +350,21 @@ $alt-class-names: false!default;
 // Large Desktops + [Lilac]
 @include lg {
 	@include col-fractions('lg-');
+}
+
+/*
+ * Re-generate the bootstrap column widths for sm+ using their functions
+ * As, without this, if you had class="col-sm-1_2 col-md-3"
+ * md's width would be overridden by sm
+ */
+@media (min-width: $screen-sm-min) {
+	@include make-grid(sm);
+}
+@media (min-width: $screen-md-min) {
+	@include make-grid(md);
+}
+@media (min-width: $screen-lg-min) {
+	@include make-grid(lg);
 }
 
 
@@ -444,6 +458,7 @@ $alt-class-names: false!default;
 
 
 
+
 /*
  * Undo some shortsighted bootstrap things
  */
@@ -502,23 +517,6 @@ a {
 /*
  * Custom pushes
  */
-@include md-plus {
-	.col-md-push-1_24 { left: percentage(1/24); }
-	.col-md-push-2_24 { left: percentage(2/24); }
-	.col-md-push-3_24 { left: percentage(3/24); }
-}
-
-/*
- * Unusual custom columns (sigh)
- */
-@include md-plus {
-	.col-md-5_18 {
-		position: relative;
-		min-height: 1px;
-		padding-left:  ($grid-gutter-width / 2);
-		padding-right: ($grid-gutter-width / 2);
-	}
-	.col-md-5_18 {
-		width: percentage(5/18);
-	}
+@include sm-plus {
+	.col-sm-push-1_24 { left: percentage(1/24); }
 }

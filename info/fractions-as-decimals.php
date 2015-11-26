@@ -8,7 +8,6 @@ th,td { padding: 5px 10px; text-align: left; }
 th { background: dodgerblue; color: white; }
 </style>
 <h1>All the available column fractions in LemonLace as decimals, ordered by their size</h1>
-<h2>Typical col-xs-1, col-xs-2, etc size columns are highlighted</h2>
 
 <?php
 $columns = array();
@@ -29,12 +28,16 @@ ksort($columns);
 #print_r($columns);
 
 echo '<table>';
-echo '<tr><th>Fraction</th><th>Class Example</th><th>Decimal</th></tr>';
+echo '<tr><th>Typical Columns</th><th>Fraction</th><th>Fraction Class</th><th>Decimal</th></tr>';
 foreach ($columns as $dec => $fraction) {
 	echo '<tr';
 		// if a main col class, col-xs-1, 2, etc, embolden it
 		if (is_integer(12/$fraction['den'])) {
-			echo ' style="font-weight:bold"';
+			echo ' style="font-weight:bold"><td>';
+				echo 'col-xs-'.(12*($fraction['num']/$fraction['den']));
+			echo '</td';
+		} else {
+			echo '><td>&nbsp;</td';
 		}
 	echo '>';
 		echo '<td>'.$fraction['num'].'/'.$fraction['den'].'</td>';
