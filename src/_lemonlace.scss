@@ -44,7 +44,7 @@
 //║▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓║
 //████████████████████████████████████████████████████████████████████████████████
 //█ .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .█
-//▓  LemonLace Bootstrap Wrapper v4.2 - Created by Michael Cook - m.ichael.co.uk ▓
+//▓  LemonLace Bootstrap Wrapper v4.3 - Created by Michael Cook - m.ichael.co.uk ▓
 //▓. @license:http://opensource.org/licenses/MIT  .   .   .   .   .   .   .   .  ▓
 //▒ .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .▒
 //╚══════════════════════════════════════════════════════════════════════════════╝
@@ -327,9 +327,9 @@ $alt-class-names: false!default;
  */
 
 // Phones + (everything) [Xanthic]
-@include xs {
-	@include col-fractions('xs-'); // attempting xs-plus = xs like bootstrap
-}
+//@include xs { // no need to use mixin for xs+
+@include col-fractions('xs-'); // attempting xs-plus = xs like bootstrap
+
 
 // Tablets + [Salmon]
 @include sm-plus {
@@ -337,6 +337,13 @@ $alt-class-names: false!default;
 
 	@include features('sm-plus-');
 	@include extra-gutters-generate('.sm-plus-');
+
+	/*
+	 * Re-generate the bootstrap column widths for sm+, etc using their
+	 * functions As, without this, if you had class="col-sm-1_2 col-md-3"
+	 * md's width would be overridden by sm
+	 */
+	@include make-grid(sm);
 }
 
 // Desktops + [Magenta]
@@ -345,27 +352,18 @@ $alt-class-names: false!default;
 
 	@include features('md-plus-');
 	@include extra-gutters-generate('.md-plus-');
+
+	@include make-grid(md);
 }
 
 // Large Desktops + [Lilac]
 @include lg {
 	@include col-fractions('lg-');
-}
 
-/*
- * Re-generate the bootstrap column widths for sm+ using their functions
- * As, without this, if you had class="col-sm-1_2 col-md-3"
- * md's width would be overridden by sm
- */
-@media (min-width: $screen-sm-min) {
-	@include make-grid(sm);
-}
-@media (min-width: $screen-md-min) {
-	@include make-grid(md);
-}
-@media (min-width: $screen-lg-min) {
 	@include make-grid(lg);
 }
+
+
 
 
 /*
