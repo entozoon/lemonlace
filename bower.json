@@ -1,0 +1,21 @@
+{
+  "name": "lemonlace",
+  "homepage": "https://github.com/entozoon/lemonlace",
+  "authors": [
+    "Michael Cook (michael@m.ichael.co.uk)"
+  ],
+  "description": "Extending the bootstrap 3 grid system with fractional columns, extra gutter classes and much much more!",
+  "main": "src/_lemonlace.scss",
+  "keywords": [
+    "lemonlace",
+    "frontend"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
