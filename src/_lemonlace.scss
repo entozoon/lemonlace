@@ -3,52 +3,51 @@
 // Extending the bootstrap grid system overriding bootstrap classes and
 // adding new ones (Rather than tinkering with bootrap's files themselves)
 //
-//╔═╤═══╤═════╤═══╤══▒▓▓█████▓██▓▓█▓▓▓▒▒▒▓▓▓▒═══╤═════╤═══╤═════╤═══╤═════╤═══╤══╗
-//║┌┘   │    ┌┘   │ ▒▓▓████▓▓████▓▓▓▓██▓▓▓▓▒▒▓▓▓│    ╔═╗  ╔══╗╔═╗╔═╗│ ╔═╗┌┘╔╗ │╔╗║
-//║│    └┐   │    └▓▓███▓█████▓█▓▓▒▒▒▓████▓▒▒▒▒▒▓┐   ║ ║  ║╔═╝║ ╚╝ ║└╔╝ ╚╗ ║╚╗└║║║
-//║└┐    │   └┐  ▒▓▓██████▓▒▒▒▓███████████████▒▒▓▒   ║ ║  ║╚═╗║╔╗╔╗║╔╝╔╩╗╚╗║ ╚═╝║║
-//║ │   ┌┘    │ ▒▓████▓▒▒▒▒▒██████▒████████████▒▒▓─  ║ ║  ║╔═╝║║╚╝║║╚╗╚╦╝╔╝║╔═╗ ║║
-//║┌┘   │    ┌┘▓▓██▓▓▓██▒▓▒▒▓██▓▓███▒██████████▒▓▒▓  ║ ╚═╗║╚═╗║║┘ ║║│╚╗ ╔╝┘║║ ╚╗║║
-//║│    └┐   ▒▓▓███▒▒▓▒█▒▒██████▓▓▒██▓█████████▓▓▒▓  ╚═══╝╚══╝╚╝  ╚╝└┐╚═╝│ ╚╝ └╚╝║
-//║└┐    │  ▓▒▓▓▓▓█▒▒▓▒▓███████▓▓▒▒▓▒▒▓███████▓▒▓▒▒▒ └┐  ╔═╗   ╔═╗   ╔══╗╔══╗  │ ║
-//║ │   ┌┘ ▓▒▓▓█▓▓▓▓▒▓▒████████▒▒▒▓▒▒ ▒▓▓██▓▒▓▒ ▓▒▒▓  │  ║ ║  ╔╝ ╚╗ ╔╝╔═╝║╔═╝ ┌┘ ║
-//║┌┘   │ ▓▒▓▓▒█▓█▓▓▒▒▒███████▓▓▓▒▒▒ ▒▒▓▒▒▒▒▒▒ ▒▓▒▒▓ ┌┘  ║ ║  ║╔═╗║╔╝╔╝  ║╚═╗ │  ║
-//║│    └▓▒▒▓▒▓▓█▓▓█▓▒▒██████████▓▓▓▓▒▓▒▓▒ ▒▓ ▓▒ ▒▒▓ │   ║ ║  ║╚═╝║╚╗╚╗  ║╔═╝ └┐ ║
-//║└┐ ██████▒▒▒██▓███▒▒█████████████▓▓▒▓▒ ▒▓▒▒ ▓ ▒▒▓ └┐  ║ ╚═╗║╔═╗║ ╚╗╚═╗║╚═╗  │ ║
-//║▒██████████▓█▓▓▓▓█▒▒█▓██████████▒▓▓▒▒▒▒ ▒ ▒▒▒▒▒▒▒  │  ╚═══╝╚╝│╚╝ ┌╚══╝╚══╝ ┌┘ ║
-//████████████▓▒▓▓▓▓█▓▒▓▓▓████▓▓▒▒▒▓▓▓▒▒▒ ▒▒▒ ▓▒ ▒▓▒ ┌┘   │    ┌┘   │    ┌┘   │  ║
-//████████████▓▓▒▒▒▓▓▓▓▒▓▒▒████▓▓▓▓▓▒▒▒▒ ▒▒▒▓▒▒ ▒▓▒  │    └┐   │▒▓▒ └┐   │    └┐ ║
-//████████████▓▓▓▒▓▓▒█▓▒▒ ▒▒▒▓▓▓▓▓▒▒▒▒ ▒▓▒ ▓▒ ▒▒▓▒▒  └┐    │  ▒▒▓  ▒▓│   └┐    │ ║
-//███████████▓▓▓▓▓▓▓▓ █▓▒▒ ▒▒▒▒▒▒▒▒ ▒ ▒▓ ▒▓ ▒▒▓▒▓▒    │   ┌┘▓▒▒ ▒   ▒▒▒   │   ┌┘ ║
-//██████████▓███▓▓▓▓▒▓▒▓▒▒▒▒▒▒▒▒▒  ▒ ▒▓ ▒▓ ▒▒▓▒▓▒    ┌┘   ▓▒▒▒ ▒ ▒  ▒ ▒▓▒▓┘   │  ║
-//██████████████████▓▓▓▒▓ ▒▒▒▒▒▒▒▒▒ ▒▓ ▒▓ ▒▒▓▒▒▓└┐   │  ▓▒ ▒ ▒ ▒ ▒ ▒ ▒ ▒  ▒▒  └┐ ║
-//████████████████████▓▓▒▓ ▒▒▒▒▒▒▒▒▒▒ ▒▓▒▒▒▓▒▒▓  │   └┐▓  ▒ ▒ ▒ ▒  ▒   ▒ ▒▒▓   │ ║
-//█████▓▓▓▓▓███████████▓▓▓▒▒▒▓▒▒▒▒▒▒▒▒▓▒▒▒▓▒▒▓▒ ┌┘    ▓ ▒  ▒ ▒ ▒   ▒ ▒▒ ▒ ▒ ▒▓┌┘ ║
-//███▓▓▓▓▓▓▓▓▓█████████▓▓▓▓▓▒▓▓▓▒▒▓▓▒▒▒▒▒▓▒▒▓▒  │    ▓▒ ▒  ▒  ▒   ▒  ▒ ▒ ▒▒▒ ▒▓  ║
-//█▓▓▓▓▓▓▓▓▓▓▓▓█████████▓▓▒▒▓▒▓▓▓▓▒▒▓▓▓▓▒▒▒▓▒   └┐  ▓▒▒ ▒ ▒   ▒   ▒   ▒  ▒  ▒ ▒▓ ║
-//▓▒▒▒▓▒▓██████▓█████████▓▓▒▓▒▓▓▓▓▓▓▒▒▒▓▓▓▓▒┐    │  ▓▒▒ ▒ ▒  ▒   ▒ ▒  ▒ ▒  ▒ ▒▒▓ ║
-//▒▒│▒▓▒▓████████████████▓▓▒▓▓▓▓▓▓▓▓▒▒▒▒▒▓▓▓▒▒  ┌┘  ▓▒▒ ▒   ▒   ▒   ▒   ▒ ▒ ▒▒▒▓ ║
-//▒┌┘ ▒▓▒▓████████████████▓▒▓▓▓▓▓▓▓▓▓▒ ▒▒▒▒▒▒▒▒ │   ▓▒ ▒ ▒ ▒   ▒  ▒ ▒ ▒▒   ▒ ▒▒▓ ║
-//║│    └┐▓███████████████▓▓▓▓▓▓▓▓▓▓▓▒▒ ▒▒▒▒▒▒▒▒└┐  ▓▒▒ ▒ ▒ ▒   ▒  ▒   ▒ ▒ ▒ ▒▒▓ ║
-//║└┐    │▒▓█▓████████████▓▒▓▓▓▓▓▓▓▓▒▒▒  ▒▒▒▒▒▒▒ │  ▓▒▒  ▒   ▒   ▒  ▒ ▒ ▒ ▒ ▒▒▒▓ ║
-//║ │   ┌┘  ▒█▓██████████▓▓▒▒▓▓▓▓▓▓▒▒▒▒  ▒▒▒▒▒▒ ┌┘  ▓▒ ▒ ▒ ▒  ▒   ▒▒ ▒   ▒  ▒▒▒▓ ║
-//║┌┘   │    ▒█▓▓████████▒▓▒▒▒▒▒▒▒▒▒▒▒   ▒▒▒▒▒  │    ▓▒▒  ▒  ▒  ▒  ▒  ▒ ▒  ▒ ▒▒▓ ║
-//║│    └┐   │██▓▓▓▓███▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒  ▒▒▒▒▒   └┐   ▓▒ ▒  ▒   ▒  ▒  ▒  ▒  ▒▒▒▓┐ ║
-//║└┐    │   └┐██▒▓▓▓▓▓▓▒▓▒▒▒▒▒▒▒▒▒▒▒▒  ▒▒▒└┐    │   └▓▒ ▒  ▒ ▒   ▒ ▒  ▒▒ ▒▒▒▒ │ ║
-//║ │   ┌┘    │███▒▒▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒  ▒▒   │   ┌┘    │▓▒ ▒▒ ▒ ▒  ▒▒ ▒  ▒▒▒▓  ┌┘ ║
-//║┌┘   │    ┌┘ ████▒▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▒ ▒▒   ┌┘   │    ┌┘ ▓▒▒ ▒  ▒  ▒ ▒▒▒ ▒▓▒   │  ║
-//║│    └┐   │  ▓█████▒▓▒▒▒▒▒▒▒▒▒▒▒▒  ▒┐   │    └┐   │    ▓▒▒▒▒ ▒ ▒  ▒▒▓ │    └┐ ║
-//║└┐    │   └┐  ████▒▓▒▒▒▒▒▒▒▒▒▒▒▒  ▒ │   └┐    │   └┐    │▓▓▒ ▒▒ ▒▒▒▓  └┐    │ ║
-//║ │   ┌┘    │ ███▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  ▒ ┌┘    │   ┌┘    │   ┌┘   ▒▒ ▒▒▒┘    │   ┌┘ ║
-//║┌┘   │    ┌┘ ▓█▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒  ▒  │    ┌┘   │    ┌┘   │    ┌┘   │    ┌┘   │  ║
+//╔══════════════════▒▓▓█████▓██▓▓█▓▓▓▒▒▒▓▓▓▒════════════════════════════════════╗
+//║──┬──────────────▒▓▓████▓▓████▓▓▓▓██▓▓▓▓▒▒▓▓▓─────╔═╗──╔══╗╔═╗╔═╗─┬╔═╗──╔╗──╔╗║
+//║─┼┼┼────────────▓▓███▓█████▓█▓▓▒▒▒▓████▓▒▒▒▒▒▓───┼║ ║──║╔═╝║ ╚╝ ║┼╔╝ ╚╗─║╚╗─║║║
+//║──┴───────────▒▓▓██████▓▒▒▒▓███████████████▒▒▓▒───║ ║──║╚═╗║╔╗╔╗║╔╝╔╩╗╚╗║ ╚═╝║║
+//║─────────────▒▓████▓▒▒▒▒▒██████▒████████████▒▒▓───║ ║──║╔═╝║║╚╝║║╚╗╚╦╝╔╝║╔═╗ ║║
+//║──────────┬─▓▓██▓▓▓██▒▓▒▒▓██▓▓███▒██████████▒▓▒▓──║ ╚═╗║╚═╗║║──║║─╚╗ ╔╝─║║┬╚╗║║
+//║─────────┼▒▓▓███▒▒▓▒█▒▒██████▓▓▒██▓█████████▓▓▒▓──╚═══╝╚══╝╚╝──╚╝──╚═╝──╚╝┼┼╚╝║
+//║─────────▓▒▓▓▓▓█▒▒▓▒▓███████▓▓▒▒▓▒▒▓███████▓▒▓▒▒▒─────╔═╗─┴─╔═╗───╔══╗╔══╗┴───║
+//║────────▓▒▓▓█▓▓▓▓▒▓▒████████▒▒▒▓▒▒ ▒▓▓██▓▒▓▒ ▓▒▒▓─────║ ║──╔╝ ╚╗─╔╝╔═╝║╔═╝────║
+//║──┬────▓▒▓▓▒█▓█▓▓▒▒▒███████▓▓▓▒▒▒ ▒▒▓▒▒▒▒▒▒ ▒▓▒▒▓─┬───║ ║──║╔═╗║╔╝╔╝──║╚═╗────║
+//║─┼┼┼──▓▒▒▓▒▓▓█▓▓█▓▒▒██████████▓▓▓▓▒▓▒▓▒ ▒▓ ▓▒ ▒▒▓┼┼┼──║ ║──║╚═╝║╚╗╚╗──║╔═╝────║
+//║──┴██████▒▒▒██▓███▒▒█████████████▓▓▒▓▒ ▒▓▒▒ ▓ ▒▒▓─┴───║ ╚═╗║╔═╗║─╚╗╚═╗║╚═╗────║
+//║▒██████████▓█▓▓▓▓█▒▒█▓██████████▒▓▓▒▒▒▒ ▒ ▒▒▒▒▒▒▒─────╚═══╝╚╝─╚╝──╚══╝╚══╝────║
+//████████████▓▒▓▓▓▓█▓▒▓▓▓████▓▓▒▒▒▓▓▓▒▒▒ ▒▒▒ ▓▒ ▒▓▒─────────┬───────────────┬───║
+//████████████▓▓▒▒▒▓▓▓▓▒▓▒▒████▓▓▓▓▓▒▒▒▒ ▒▒▒▓▒▒ ▒▓▒─────────┼┼┼─▒▓▒─────────┼┼┼──║
+//████████████▓▓▓▒▓▓▒█▓▒▒ ▒▒▒▓▓▓▓▓▒▒▒▒ ▒▓▒ ▓▒ ▒▒▓▒▒──────────┴▒▒▓  ▒▓────────┴───║
+//███████████▓▓▓▓▓▓▓▓ █▓▒▒ ▒▒▒▒▒▒▒▒ ▒ ▒▓ ▒▓ ▒▒▓▒▓▒──────────▓▒▒ ▒   ▒▒▒──────────║
+//██████████▓███▓▓▓▓▒▓▒▓▒▒▒▒▒▒▒▒▒  ▒ ▒▓ ▒▓ ▒▒▓▒▓▒────┬────▓▒▒▒ ▒ ▒  ▒ ▒▓▒▓───────║
+//██████████████████▓▓▓▒▓ ▒▒▒▒▒▒▒▒▒ ▒▓ ▒▓ ▒▒▓▒▒▓────┼┼┼─▓▒ ▒ ▒ ▒ ▒ ▒ ▒ ▒  ▒▒─────║
+//████████████████████▓▓▒▓ ▒▒▒▒▒▒▒▒▒▒ ▒▓▒▒▒▓▒▒▓──────┴─▓  ▒ ▒ ▒ ▒  ▒   ▒ ▒▒▓─────║
+//█████▓▓▓▓▓███████████▓▓▓▒▒▒▓▒▒▒▒▒▒▒▒▓▒▒▒▓▒▒▓▒───────▓ ▒  ▒ ▒ ▒   ▒ ▒▒ ▒ ▒ ▒▓───║
+//███▓▓▓▓▓▓▓▓▓█████████▓▓▓▓▓▒▓▓▓▒▒▓▓▒▒▒▒▒▓▒▒▓▒───────▓▒ ▒  ▒  ▒   ▒  ▒ ▒ ▒▒▒ ▒▓──║
+//█▓▓▓▓▓▓▓▓▓▓▓▓█████████▓▓▒▒▓▒▓▓▓▓▒▒▓▓▓▓▒▒▒▓▒┼┼─────▓▒▒ ▒ ▒   ▒   ▒   ▒  ▒  ▒ ▒▓─║
+//▓▒▒▒▓▒▓██████▓█████████▓▓▒▓▒▓▓▓▓▓▓▒▒▒▓▓▓▓▒─┴──────▓▒▒ ▒ ▒  ▒   ▒ ▒  ▒ ▒  ▒ ▒▒▓─║
+//▒▒─▒▓▒▓████████████████▓▓▒▓▓▓▓▓▓▓▓▒▒▒▒▒▓▓▓▒▒──────▓▒▒ ▒   ▒   ▒   ▒   ▒ ▒ ▒▒▒▓─║
+//▒──┬▒▓▒▓████████████████▓▒▓▓▓▓▓▓▓▓▓▒ ▒▒▒▒▒▒▒▒─────▓▒ ▒ ▒ ▒   ▒  ▒ ▒ ▒▒   ▒ ▒▒▓─║
+//║─┼┼┼───▓███████████████▓▓▓▓▓▓▓▓▓▓▓▒▒ ▒▒▒▒▒▒▒▒────▓▒▒ ▒ ▒ ▒   ▒  ▒   ▒ ▒ ▒ ▒▒▓─║
+//║──┴────▒▓█▓████████████▓▒▓▓▓▓▓▓▓▓▒▒▒  ▒▒▒▒▒▒▒────▓▒▒  ▒   ▒   ▒  ▒ ▒ ▒ ▒ ▒▒▒▓─║
+//║─────────▒█▓██████████▓▓▒▒▓▓▓▓▓▓▒▒▒▒  ▒▒▒▒▒▒─────▓▒ ▒ ▒ ▒  ▒   ▒▒ ▒   ▒  ▒▒▒▓─║
+//║──────────▒█▓▓████████▒▓▒▒▒▒▒▒▒▒▒▒▒   ▒▒▒▒▒───────▓▒▒  ▒  ▒  ▒  ▒  ▒ ▒  ▒ ▒▒▓─║
+//║─────────┼┼██▓▓▓▓███▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒  ▒▒▒▒▒┼┼──────▓▒ ▒  ▒   ▒  ▒  ▒  ▒  ▒▒▒▓──║
+//║──────────┴─██▒▓▓▓▓▓▓▒▓▒▒▒▒▒▒▒▒▒▒▒▒  ▒▒▒──┴────────▓▒ ▒  ▒ ▒   ▒ ▒  ▒▒ ▒▒▒▒───║
+//║────────────███▒▒▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒  ▒▒──────────────▓▒ ▒▒ ▒ ▒  ▒▒ ▒  ▒▒▒▓─────║
+//║──┬──────────████▒▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▒ ▒▒─────────────┬──▓▒▒ ▒  ▒  ▒ ▒▒▒ ▒▓▒──────║
+//║─┼┼┼─────────▓█████▒▓▒▒▒▒▒▒▒▒▒▒▒▒  ▒─────────────┼┼┼───▓▒▒▒▒ ▒ ▒  ▒▒▓─────────║
+//║──┴───────────████▒▓▒▒▒▒▒▒▒▒▒▒▒▒  ▒───────────────┴──────▓▓▒ ▒▒ ▒▒▒▓──────────║
+//║─────────────███▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  ▒──────────────────────────▒▒ ▒▒▒────────────║
+//║─────────────▓█▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒  ▒─────────────────────────────────────────────║
 //║▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓║
 //████████████████████████████████████████████████████████████████████████████████
 //█ .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .█
-//▓  LemonLace Bootstrap Wrapper v4.3 - Created by Michael Cook - m.ichael.co.uk ▓
-//▓. @license:http://opensource.org/licenses/MIT  .   .   .   .   .   .   .   .  ▓
-//▒ .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .▒
+//▓  LemonLace Bootstrap Wrapper - Created by Michael Cook - m.ichael.co.uk  .   ▓
+//▓ @license:http://opensource.org/licenses/MIT   .   .   .   .   .   .   .   .  ▓
+//▒.   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   . ▒
 //╚══════════════════════════════════════════════════════════════════════════════╝
-
 
 
 //╔═════════════════════════════ Fractional Columns ══════════════════════════════╗
@@ -73,7 +72,7 @@ $gutterless-classes: true!default; // 2kb extra
 //║ More advanced classes are also created such as .sm-plus-extra-gutters-2--right║
 //║ Note: The current maximum is 4                                                ║
 //╚═══════════════════════════════════════════════════════════════════════════════╝
-$extra-gutter-classes: false!default; // 6.2kb extra
+$extra-gutter-classes: true!default; // 6.2kb extra
 
 
 //╔══════════════════════════════ General Features ═══════════════════════════════╗
@@ -94,13 +93,6 @@ $extra-gutter-classes: false!default; // 6.2kb extra
 //║                                                                               ║
 //╚═══════════════════════════════════════════════════════════════════════════════╝
 $general-features: true!default; // 3.3kb extra
-
-
-//╔═══════════════════════ Alt Class Names (rarely needed) ═══════════════════════╗
-//║ Create class aliases such as .xs-hidden for .hidden-xs, etc.                  ║
-//║ Try not to use these, as incongruous bootstrap class names are here to stay.  ║
-//╚═══════════════════════════════════════════════════════════════════════════════╝
-$alt-class-names: false!default;
 
 
 // Applies to given width and above
@@ -148,33 +140,46 @@ $alt-class-names: false!default;
  */
 @mixin features($prefix:'') {
 	@if $gutterless-classes == true {
-		.#{$prefix}gutterless { @include gutterless(); }
-		.#{$prefix}gutterless--left { @include gutterless--left() }
+		.#{$prefix}gutterless        { @include gutterless();       }
+		.#{$prefix}gutterless--left  { @include gutterless--left()  }
 		.#{$prefix}gutterless--right { @include gutterless--right() }
 	}
 
 	@if $general-features == true {
-		.#{$prefix}left { &, &.right { float: left!important; } }
-		.#{$prefix}right { &, &.left { float: right!important; } }
+		.#{$prefix}children-padded-left { > * {
+			//float: left!important;
+			// Allow text-center etc:
+			float: none!important;
+			display: inline-block;
+			padding-left: $grid-gutter-width * 0.5;
+		} }
+		.#{$prefix}left  { &, &.right { float: left!important;  } }
+		.#{$prefix}right { &, &.left  { float: right!important; } }
+
+		.#{$prefix}static   { position: static!important;   }
+		.#{$prefix}relative { position: relative!important; }
+
+
+		.#{$prefix}text-left   { text-align: left!important;   }
+		.#{$prefix}text-right  { text-align: right!important;  }
+		.#{$prefix}text-center { text-align: center!important; }
+
+		.#{$prefix}clear { display: block!important; clear: both; }
+
+		/*
+		 * Extras, not typically required:
+		 *
 		.#{$prefix}center { &, &.center {
 			float: none!important; margin-left: auto!important; margin-right:auto!important; } }
 
-		.#{$prefix}static { 	 position: static!important; }
-		.#{$prefix}relative { position: relative!important; }
+		// xs-row, sm-plus-row, etc.
+		.#{$prefix}row { @include row(); }
 
 		.#{$prefix}fill {
 			@include border-box();
 			width: 100%!important;
 		}
-
-		.#{$prefix}text-left { text-align: left!important; }
-		.#{$prefix}text-right { text-align: right!important; }
-		.#{$prefix}text-center { text-align: center!important; }
-
-		.#{$prefix}clear { display: block!important; clear: both; }
-
-		// xs-row, sm-plus-row, etc.
-		.#{$prefix}row { @include row(); }
+		*/
 	}
 }
 
@@ -182,15 +187,6 @@ $alt-class-names: false!default;
 /*
  * Mixins used in features above
  */
-
-@mixin border-box() {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	-o-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
 @mixin gutterless--left() { padding-left: 0!important; }
 @mixin gutterless--right() { padding-right: 0!important; }
 @mixin gutterless() {
@@ -231,7 +227,7 @@ $alt-class-names: false!default;
 	@include extra-gutters--right($gutters);
 }
 /*
-// Unusually needed
+// Negative gutters (atyical)
 @mixin negative-gutters--left($gutters) {
 	margin-left: - $grid-gutter-width * ($gutters / 2 + 0.5); // removed !important for gutterless reasons
 }
@@ -303,6 +299,15 @@ $alt-class-names: false!default;
 }
 
 
+/* xs-clear, etc. display: none by default
+ * as even an empty div can mess with layouts amongst inline-blocks
+ */
+.xs-clear,
+.sm-clear,
+.md-clear,
+.lg-clear
+{ display: none; }
+
 
 
 /*
@@ -317,7 +322,6 @@ $alt-class-names: false!default;
 
 // Generic gutterless rows
 @include gutterless-rows('.row.');
-
 
 
 
@@ -399,6 +403,7 @@ $alt-class-names: false!default;
 }
 
 
+
 /*
  * Generate includes for grid widths, to allow things like @include col-xs-4
  * Very useful considering you can't @extend classes from within media queries.
@@ -476,45 +481,77 @@ a {
 .row { clear: both; }
 
 
-/*
- * Miscellaneous classes
- */
-
-// Alt class names, try not to use these
-@if $alt-class-names == true {
-	.xs-hidden  { @extend .hidden-xs; }
-	.sm-hidden  { @extend .hidden-sm; }
-	.md-hidden  { @extend .hidden-md; }
-	.lg-hidden  { @extend .hidden-lg; }
-	.xs-visible { @extend .visible-xs; }
-	.sm-visible { @extend .visible-sm; }
-	.md-visible { @extend .visible-md; }
-	.lg-visible { @extend .visible-lg; }
-}
 
 /*
- * Negative gutters (not typically needed, except perhaps for hr)
+ * Custom pushes (atypical)
  */
-.negative-gutters {
-	margin-left: - $grid-gutter-width!important;
-	margin-right: - $grid-gutter-width!important;
-}
-
 /*
- * Custom grid based padding
+@include lg {
+	.col-lg-push-1_24 { left: percentage(1/24); }
+	.col-lg-push-3_24 { left: percentage(3/24); }
+	.col-lg-push-5_24 { left: percentage(5/24); }
+}
+*/
+
+
+
+/**
+ * Override bootstrap .form-control focus mixin in order to harmlessly
+ * abstract the styles so they can be used with customSelect.
+ * And allow more customisation such as with the box-shadow
  */
-.padding-gutters-1_2 {
-	position: relative;
-	padding: $grid-gutter-width*0.5;
+@mixin form-control-focus-styles(
+	$color: $input-border-focus,
+	$alpha: null,
+	$extra: null,  // Double up the shadow
+	$default: null
+) {
+	// Setting defaults like this allows passing nulls through from form-control-focus()
+	@if ($alpha   == null) { $alpha:   0.75;   }
+	@if ($extra   == null) { $extra:   false;  }
+	@if ($default == null) { $default: #{inset 0 1px 1px rgba(0,0,0,0.75)}; }
+
+	$hasDefault: true;
+	@if ($default == false) { $hasDefault: false; }
+
+	$color-rgba: rgba(red($color), green($color), blue($color), $alpha);
+	border-color: $color;
+	outline: 0;
+	$shadow: 0 0 8px $color-rgba;
+	// Give it a super strong shadow if desired
+	@if ($extra == true) {
+		$extra: $shadow, $shadow;
+	} @else {
+		$extra: null;
+	}
+	@if ($hasDefault) {
+		box-shadow: $default, $shadow, $extra;
+	} @else {
+		box-shadow: $shadow, $extra;
+	}
+}
+// Same as normal, but styles are abstracted into a mixin of their own
+@mixin form-control-focus(
+	$color: $input-border-focus,
+	$alpha: null,
+	$extra: null,
+	$default: null
+) {
+  &:focus {
+	@include form-control-focus-styles($color,$alpha,$extra,$default);
+  }
 }
 
-.gutter-top {
-	padding-top: $grid-gutter-width*0.25;
-}
 
-/*
- * Custom pushes
+
+/**
+ * Similarly harmlessly, override (in a more customisable way):
+ * WebKit-style focus
  */
-@include sm-plus {
-	.col-sm-push-1_24 { left: percentage(1/24); }
+@mixin tab-focus($color:-webkit-focus-ring-color,$width:2px,$offset:-2px) {
+  // Default
+  outline: thin dotted;
+  // WebKit
+  outline: $color solid $width;
+  outline-offset: $offset;
 }
